@@ -3,6 +3,7 @@ package com.kelly.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kelly.model.Tybmb;
 
+import java.util.List;
 import java.util.Map;
 
 public interface YbmbService {
@@ -14,4 +15,6 @@ public interface YbmbService {
     void deleteByid(String id);
 
     void changeStaus(String id, String staus);
+
+    List<Tybmb> queryBymc(String mbmc);
 }

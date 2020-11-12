@@ -55,6 +55,11 @@ public class YbmbController extends Base {
         return AjaxReturn.success("更新成功");
     }
 
+    @RequestMapping(value = "/ybmb/remoteSearch/{mbmc}", method = RequestMethod.GET)
+    public Object goodsByFlid(@PathVariable String mbmc) {
+        return AjaxReturn.success(ybmbService.queryBymc(mbmc));
+    }
+
     @GetMapping("/mbpage")
     public Object page(HttpServletRequest request){
         String current = request.getParameter("current");

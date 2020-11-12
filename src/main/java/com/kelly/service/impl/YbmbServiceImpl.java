@@ -62,4 +62,12 @@ public class YbmbServiceImpl extends Base implements YbmbService {
         }
         tybmbMapper.update(null, updateWrapper);
     }
+
+    @Override
+    public List<Tybmb> queryBymc(String mbmc) {
+        QueryWrapper<Tybmb> query = new QueryWrapper<>();
+        query.like("ybname", mbmc);
+        query.eq("staus","0");
+        return tybmbMapper.selectList(query);
+    }
 }
