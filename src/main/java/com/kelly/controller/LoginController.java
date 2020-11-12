@@ -1,6 +1,5 @@
 package com.kelly.controller;
 
-import com.kelly.dao.StuMapper;
 import com.kelly.model.Tuser;
 import com.kelly.service.LoginService;
 import com.kelly.vo.AjaxReturn;
@@ -30,5 +29,12 @@ public class LoginController {
             return AjaxReturn.error("登陆错误");
         }
 
+    }
+
+    @GetMapping("/h/{message}")
+    public String echo(@PathVariable String message,HttpServletRequest request) {
+        System.out.println(request.getRequestURL());
+        System.out.println(request.getRequestURI());
+        return message;
     }
 }

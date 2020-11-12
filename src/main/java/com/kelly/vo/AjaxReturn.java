@@ -64,4 +64,8 @@ public class AjaxReturn<T> {
 		this.message = message;
 	}
 
+	public static void main(String[] args) {
+		System.out.println("java".indexOf(";")!=-1);
+	}
+
 }

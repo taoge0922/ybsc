@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelly.dao.TybmbMapper">
+  <resultMap id="BaseResultMap" type="com.kelly.model.Tybmb">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ybcode" jdbcType="VARCHAR" property="ybcode" />
+    <result column="ybname" jdbcType="VARCHAR" property="ybname" />
+    <result column="staus" jdbcType="VARCHAR" property="staus" />
+    <result column="cuser" jdbcType="VARCHAR" property="cuser" />
+    <result column="cdate" jdbcType="TIMESTAMP" property="cdate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.kelly.model.Tybmb">
+    insert into t_ybmb (id, ybcode, ybname, 
+      staus, cuser, cdate)
+    values (#{id,jdbcType=VARCHAR}, #{ybcode,jdbcType=VARCHAR}, #{ybname,jdbcType=VARCHAR}, 
+      #{staus,jdbcType=VARCHAR}, #{cuser,jdbcType=VARCHAR}, #{cdate,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+    select * from t_ybmb where 1=1
+    <if test="params.codeOrName != null">
+      AND (ybname like '%${params.codeOrName}%' or ybcode
+      like '%${params.codeOrName}%')
+    </if>
+    order by cdate desc,id asc
+  </select>
+
+</mapper>
