@@ -1,5 +1,8 @@
 package com.kelly.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("t_car")
 public class Tcar {
     private String id;
 

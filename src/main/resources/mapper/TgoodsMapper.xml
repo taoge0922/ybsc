@@ -30,8 +30,9 @@
       AND goodsname like '%${params.codeOrName}%'
     </if>
     <if test="params.staus != null">
-      AND goodsname = #{staus,jdbcType=VARCHAR}
+      AND staus = #{params.staus,jdbcType=VARCHAR}
     </if>
     order by cdate desc,id asc
   </select>
+
 </mapper>

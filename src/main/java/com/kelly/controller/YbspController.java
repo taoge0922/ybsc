@@ -128,5 +128,21 @@ public class YbspController  extends Base {
         return AjaxReturn.success("更新成功");
     }
 
+    @RequestMapping(value = "/carSum", method = RequestMethod.GET)
+    public Object getCarSum(){
+        return AjaxReturn.success(goodsService.getCarCount("周凯利"));
+    }
+
+    @RequestMapping(value = "/cars", method = RequestMethod.GET)
+    public Object queryCar(){
+        return AjaxReturn.success(goodsService.queryCars("周凯利"));
+    }
+
+    @RequestMapping(value = "/pay", method = RequestMethod.POST)
+    public Object pay(@RequestBody Map<String,Object> map){
+        goodsService.pay(map.get("cgids")+"",map.get("cgnums")+"");
+        return AjaxReturn.success();
+    }
+
 
 }

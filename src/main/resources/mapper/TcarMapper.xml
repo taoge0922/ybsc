@@ -18,4 +18,8 @@
       #{goodname,jdbcType=VARCHAR}, #{goodprice,jdbcType=DOUBLE}, #{goodnum,jdbcType=INTEGER}, 
       #{payed,jdbcType=VARCHAR})
   </insert>
+
+  <select id="getSumByUsername" resultType="Integer" parameterType="String">
+    select IFNULL(SUM(c.goodnum),0) from t_car c where c.username  = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>
