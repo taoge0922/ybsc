@@ -1,7 +1,10 @@
 package com.kelly.model;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 
+@TableName("t_goods")
 public class Tgoods {
     private String id;
 
@@ -20,6 +23,8 @@ public class Tgoods {
     private Date cdate;
 
     private Double price;
+
+    private String imageurl;
 
     public String getId() {
         return id;
@@ -91,5 +96,13 @@ public class Tgoods {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 }

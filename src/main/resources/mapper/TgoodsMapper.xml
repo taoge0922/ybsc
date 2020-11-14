@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelly.dao.TgoodsMapper">
+  <resultMap id="BaseResultMap" type="com.kelly.model.Tgoods">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="mbid" jdbcType="VARCHAR" property="mbid" />
+    <result column="goodsname" jdbcType="VARCHAR" property="goodsname" />
+    <result column="goodsnum" jdbcType="INTEGER" property="goodsnum" />
+    <result column="mbname" jdbcType="VARCHAR" property="mbname" />
+    <result column="staus" jdbcType="VARCHAR" property="staus" />
+    <result column="cuser" jdbcType="VARCHAR" property="cuser" />
+    <result column="cdate" jdbcType="TIMESTAMP" property="cdate" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="imageurl" jdbcType="VARCHAR" property="imageurl" />
+  </resultMap>
+  <insert id="insert" parameterType="com.kelly.model.Tgoods">
+    insert into t_goods (id, mbid, goodsname, 
+      goodsnum, mbname, staus, 
+      cuser, cdate, price,imageurl
+      )
+    values (#{id,jdbcType=VARCHAR}, #{mbid,jdbcType=VARCHAR}, #{goodsname,jdbcType=VARCHAR}, 
+      #{goodsnum,jdbcType=INTEGER}, #{mbname,jdbcType=VARCHAR}, #{staus,jdbcType=VARCHAR}, 
+      #{cuser,jdbcType=VARCHAR}, #{cdate,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, #{imageurl,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+    select * from t_goods where 1=1
+    <if test="params.codeOrName != null">
+      AND goodsname like '%${params.codeOrName}%'
+    </if>
+    <if test="params.staus != null">
+      AND goodsname = #{staus,jdbcType=VARCHAR}
+    </if>
+    order by cdate desc,id asc
+  </select>
+</mapper>

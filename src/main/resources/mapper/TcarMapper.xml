@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kelly.dao.TcarMapper">
+  <resultMap id="BaseResultMap" type="com.kelly.model.Tcar">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="goodid" jdbcType="VARCHAR" property="goodid" />
+    <result column="goodname" jdbcType="VARCHAR" property="goodname" />
+    <result column="goodprice" jdbcType="DOUBLE" property="goodprice" />
+    <result column="goodnum" jdbcType="INTEGER" property="goodnum" />
+    <result column="payed" jdbcType="VARCHAR" property="payed" />
+  </resultMap>
+  <insert id="insert" parameterType="com.kelly.model.Tcar">
+    insert into t_car (id, username, goodid, 
+      goodname, goodprice, goodnum, 
+      payed)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{goodid,jdbcType=VARCHAR}, 
+      #{goodname,jdbcType=VARCHAR}, #{goodprice,jdbcType=DOUBLE}, #{goodnum,jdbcType=INTEGER}, 
+      #{payed,jdbcType=VARCHAR})
+  </insert>
+</mapper>
